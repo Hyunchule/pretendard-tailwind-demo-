@@ -1,0 +1,172 @@
+React + Tailwind CSS에서 Pretendard 웹폰트 완벽 통합하기
+
+최근 한국어 웹사이트를 개발하면서 **Pretendard** 폰트를 **Tailwind CSS**와 함께 사용할 기회가 있었습니다. 이 과정에서 웹폰트 통합과 커스터마이징에 대해 많은 것을 배웠고, 그 경험을 공유하고자 합니다.
+
+🎯 프로젝트 개요
+
+이번 프로젝트는 **React + Vite** 환경에서 **Tailwind CSS v3.4.0**과 **Pretendard 폰트**를 완벽하게 통합하는 것이 목표였습니다. 특히 다음과 같은 요구사항이 있었습니다:
+
+- 9가지 폰트 굵기 (Thin ~ Black) 모두 지원
+- 성능 최적화를 위한 subset 폰트 활용
+- Tailwind CSS 커스터마이징으로 직관적인 클래스명 사용
+- 반응형 디자인 지원
+
+🔧 기술 스택
+
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS v3.4.0
+- **Font**: Pretendard (woff, woff2, subset)
+- **Deployment**: GitHub Pages
+
+🚀 구현 과정
+
+1. 프로젝트 초기 설정
+
+```bash
+# Vite로 React 프로젝트 생성
+npm create vite@latest webfont_test -- --template react-ts
+
+# Tailwind CSS 설치 및 설정
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+2. Pretendard 폰트 파일 구성
+
+프로젝트의 `public/fonts` 디렉토리에 다음과 같은 구조로 폰트 파일을 배치했습니다:
+
+```
+public/fonts/
+├── pretendard.css              # 전체 폰트 CSS
+├── pretendard-subset.css       # 서브셋 폰트 CSS
+├── woff/                       # 표준 woff 파일
+├── woff2/                      # 압축된 woff2 파일
+├── woff-subset/                # 서브셋 woff 파일
+└── woff2-subset/               # 서브셋 woff2 파일
+```
+
+3. HTML에 폰트 CSS 링크 추가
+
+```html
+<!-- index.html -->
+<link rel="stylesheet" href="/fonts/pretendard-subset.css">
+```
+
+4. Tailwind CSS 커스터마이징
+
+```js
+// tailwind.config.js
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        pretendard: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        '5xl': '50px',
+        '6xl': ['60px', { 
+          lineHeight: '68px', 
+          letterSpacing: '-0.02em' 
+        }],
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+5. CSS 초기화 및 기본 설정
+
+```css
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'system-ui', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+```
+
+🎨 주요 기능 구현
+
+1. 폰트 굵기 데모
+
+```jsx
+// 9가지 폰트 굵기 테스트
+const fontWeights = [
+  { class: 'font-thin', weight: '100', name: 'Thin' },
+  { class: 'font-extralight', weight: '200', name: 'ExtraLight' },
+  { class: 'font-light', weight: '300', name: 'Light' },
+  { class: 'font-normal', weight: '400', name: 'Regular' },
+  { class: 'font-medium', weight: '500', name: 'Medium' },
+  { class: 'font-semibold', weight: '600', name: 'SemiBold' },
+  { class: 'font-bold', weight: '700', name: 'Bold' },
+  { class: 'font-extrabold', weight: '800', name: 'ExtraBold' },
+  { class: 'font-black', weight: '900', name: 'Black' },
+];
+
+{fontWeights.map((font) => (
+  <div key={font.weight} className={`${font.class} font-pretendard text-2xl mb-4`}>
+    {font.name} ({font.weight}) - 안녕하세요! Hello World!
+  </div>
+))}
+```
+
+2. 커스텀 텍스트 크기 활용
+
+```jsx
+<div className="font-pretendard">
+  <h1 className="text-6xl font-black mb-6">메인 타이틀</h1>
+  <h2 className="text-5xl font-bold mb-4">서브 타이틀</h2>
+  <p className="text-xl font-regular">본문 내용</p>
+</div>
+```
+
+🔍 학습한 점들
+
+1. 폰트 로딩 최적화
+- **woff2** 파일 우선 사용으로 파일 크기 20-30% 절약
+- **subset** 폰트로 필요한 문자만 포함하여 추가적인 용량 절약
+- `font-display: swap` 속성으로 FOIT(Flash of Invisible Text) 방지
+
+2. Tailwind CSS 커스터마이징
+- `fontFamily` 설정으로 `font-pretendard` 클래스 자동 생성
+- `fontSize` 객체 형태로 line-height, letter-spacing 함께 설정 가능
+- 기존 Tailwind 클래스와 자연스럽게 조합 가능
+
+3. 성능 고려사항
+- 폰트 파일 용량: 전체 세트 약 2MB, subset 약 200KB
+- 브라우저 호환성: woff2 (95%+), woff (99%+) 지원
+- 로딩 순서: CSS → woff2 → woff 순으로 fallback
+
+🌟 결과물
+
+최종적으로 다음과 같은 결과물을 얻었습니다:
+
+- **GitHub Repository**: https://github.com/Hyunchule/pretendard-tailwind-demo-
+- **Live Demo**: https://Hyunchule.github.io/pretendard-tailwind-demo-
+
+주요 특징:
+- ✅ 9가지 폰트 굵기 완전 지원
+- ✅ 커스텀 텍스트 크기 (50px, 60px)
+- ✅ 반응형 디자인
+- ✅ 성능 최적화 (subset 폰트)
+- ✅ GitHub Pages 자동 배포
+
+💡 마무리
+
+이번 프로젝트를 통해 웹폰트 통합의 전체적인 프로세스를 이해할 수 있었습니다. 특히 **Pretendard**는 한국어 웹사이트에서 시스템 폰트와 비슷한 가독성을 제공하면서도 일관된 디자인을 구현할 수 있는 훌륭한 선택이었습니다.
+
+**Tailwind CSS**의 커스터마이징 기능을 활용하면 디자인 시스템에 맞는 폰트 클래스를 쉽게 만들 수 있고, 이는 개발 생산성과 유지보수성을 크게 향상시킵니다.
+
+앞으로도 웹폰트 최적화와 타이포그래피에 대한 연구를 계속해서, 더 나은 사용자 경험을 제공하는 웹사이트를 만들어 나가겠습니다.
+
+📚 참고 자료
+
+- Pretendard 공식 GitHub: https://github.com/orioncactus/pretendard
+- Tailwind CSS 공식 문서: https://tailwindcss.com/
+- 웹폰트 최적화 가이드: https://web.dev/optimize-webfonts/ 
