@@ -1,69 +1,97 @@
-# React + TypeScript + Vite
+# Pretendard Tailwind Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Tailwind CSS + Pretendard 폰트 통합 데모 프로젝트입니다.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**배포 사이트**: [https://Hyunchule.github.io/pretendard-tailwind-demo-](https://Hyunchule.github.io/pretendard-tailwind-demo-)
 
-## Expanding the ESLint configuration
+## ✨ 주요 기능
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** + **TypeScript** + **Vite**
+- **Tailwind CSS v3.4.0** 스타일링
+- **Pretendard 폰트** 완전 통합
+  - 9가지 폰트 굵기 (Thin ~ Black)
+  - woff, woff2, subset 파일 포함
+- **커스텀 텍스트 크기** 설정
+  - `text-5xl`: 50px
+  - `text-6xl`: 60px (line-height, letter-spacing 포함)
+- **반응형 디자인**
+- **폰트 테스트 페이지**
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 개발 환경 실행
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+```bash
+# 의존성 설치
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 개발 서버 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# GitHub Pages 배포
+npm run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 프로젝트 구조
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+webfont_test/
+├── public/
+│   └── fonts/
+│       ├── pretendard.css
+│       ├── pretendard-subset.css
+│       ├── woff/
+│       ├── woff2/
+│       ├── woff-subset/
+│       └── woff2-subset/
+├── src/
+│   ├── App.tsx          # 폰트 테스트 컴포넌트
+│   ├── App.css          # 스타일링
+│   └── index.css        # 기본 스타일
+├── tailwind.config.js   # Tailwind 설정
+└── package.json
+```
+
+## 🎨 Tailwind CSS 커스터마이징
+
+### 폰트 패밀리
+```js
+// tailwind.config.js
+fontFamily: {
+  pretendard: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+}
+```
+
+### 커스텀 텍스트 크기
+```js
+// tailwind.config.js
+fontSize: {
+  '5xl': '50px',
+  '6xl': ['60px', { lineHeight: '68px', letterSpacing: '-0.02em' }],
+}
+```
+
+## 🎯 사용 예시
+
+```jsx
+// Pretendard 폰트 적용
+<div className="font-pretendard">
+  <h1 className="text-6xl font-black">제목</h1>
+  <p className="text-5xl font-medium">부제목</p>
+  <p className="text-xl font-regular">본문</p>
+</div>
+```
+
+## 🔗 관련 링크
+
+- [Pretendard 폰트](https://github.com/orioncactus/pretendard)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+
+## 📄 라이센스
+
+이 프로젝트는 MIT 라이센스로 배포됩니다.
