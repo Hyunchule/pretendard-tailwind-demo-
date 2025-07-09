@@ -40,6 +40,174 @@ function App() {
           </p>
         </div>
 
+        {/* 폰트 적용 전후 비교 섹션 */}
+        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">🔄 Pretendard 폰트 적용 전후 비교</h2>
+          
+          {/* 제목 크기 비교 */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">1. 대제목 비교 (text-4xl font-bold)</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+                <div className="text-sm text-red-600 font-medium mb-2">❌ 시스템 기본 폰트</div>
+                <h1 className="text-4xl font-bold text-gray-900" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+                  웹 개발의 미래
+                </h1>
+                <p className="text-sm text-gray-600 mt-2" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
+                <div className="text-sm text-green-600 font-medium mb-2">✅ Pretendard 폰트</div>
+                <h1 className="text-4xl font-bold text-gray-900 font-pretendard">
+                  웹 개발의 미래
+                </h1>
+                <p className="text-sm text-gray-600 mt-2 font-pretendard">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 본문 텍스트 비교 */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">2. 본문 텍스트 비교 (text-base)</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+                <div className="text-sm text-red-600 font-medium mb-3">❌ 시스템 기본 폰트</div>
+                <div style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+                  <p className="text-base leading-relaxed text-gray-800 mb-4">
+                    타이포그래피는 웹 디자인에서 가장 중요한 요소 중 하나입니다. 
+                    올바른 폰트 선택은 사용자 경험을 크게 향상시킬 수 있습니다.
+                  </p>
+                  <p className="text-base leading-relaxed text-gray-800">
+                    한글과 영문이 조화롭게 어우러져야 하며, 
+                    가독성과 심미성을 동시에 만족해야 합니다.
+                  </p>
+                  <div className="mt-3 text-sm text-gray-600">
+                    숫자: 1234567890 | 영문: ABCDEFG abcdefg
+                  </div>
+                </div>
+              </div>
+              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
+                <div className="text-sm text-green-600 font-medium mb-3">✅ Pretendard 폰트</div>
+                <div className="font-pretendard">
+                  <p className="text-base leading-relaxed text-gray-800 mb-4">
+                    타이포그래피는 웹 디자인에서 가장 중요한 요소 중 하나입니다. 
+                    올바른 폰트 선택은 사용자 경험을 크게 향상시킬 수 있습니다.
+                  </p>
+                  <p className="text-base leading-relaxed text-gray-800">
+                    한글과 영문이 조화롭게 어우러져야 하며, 
+                    가독성과 심미성을 동시에 만족해야 합니다.
+                  </p>
+                  <div className="mt-3 text-sm text-gray-600">
+                    숫자: 1234567890 | 영문: ABCDEFG abcdefg
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 다양한 굵기 비교 */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">3. 폰트 굵기별 비교</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+                <div className="text-sm text-red-600 font-medium mb-3">❌ 시스템 기본 폰트</div>
+                <div style={{fontFamily: 'system-ui, -apple-system, sans-serif'}} className="space-y-2">
+                  <div className="font-light">Light: 디자인 시스템의 일관성</div>
+                  <div className="font-normal">Normal: 디자인 시스템의 일관성</div>
+                  <div className="font-medium">Medium: 디자인 시스템의 일관성</div>
+                  <div className="font-semibold">SemiBold: 디자인 시스템의 일관성</div>
+                  <div className="font-bold">Bold: 디자인 시스템의 일관성</div>
+                  <div className="font-black">Black: 디자인 시스템의 일관성</div>
+                </div>
+              </div>
+              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
+                <div className="text-sm text-green-600 font-medium mb-3">✅ Pretendard 폰트</div>
+                <div className="font-pretendard space-y-2">
+                  <div className="font-light">Light: 디자인 시스템의 일관성</div>
+                  <div className="font-normal">Normal: 디자인 시스템의 일관성</div>
+                  <div className="font-medium">Medium: 디자인 시스템의 일관성</div>
+                  <div className="font-semibold">SemiBold: 디자인 시스템의 일관성</div>
+                  <div className="font-bold">Bold: 디자인 시스템의 일관성</div>
+                  <div className="font-black">Black: 디자인 시스템의 일관성</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 실제 UI 컴포넌트 비교 */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">4. 실제 UI 컴포넌트 비교</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+                <div className="text-sm text-red-600 font-medium mb-4">❌ 시스템 기본 폰트</div>
+                <div style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+                  {/* 카드 컴포넌트 */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">프로젝트 제목</h4>
+                    <p className="text-sm text-gray-600 mb-3">
+                      React와 TypeScript를 활용한 모던 웹 애플리케이션 개발
+                    </p>
+                    <div className="flex gap-2">
+                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">TypeScript</span>
+                    </div>
+                  </div>
+                  {/* 버튼 */}
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded font-medium text-sm">
+                    더 알아보기
+                  </button>
+                </div>
+              </div>
+              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
+                <div className="text-sm text-green-600 font-medium mb-4">✅ Pretendard 폰트</div>
+                <div className="font-pretendard">
+                  {/* 카드 컴포넌트 */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">프로젝트 제목</h4>
+                    <p className="text-sm text-gray-600 mb-3">
+                      React와 TypeScript를 활용한 모던 웹 애플리케이션 개발
+                    </p>
+                    <div className="flex gap-2">
+                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">TypeScript</span>
+                    </div>
+                  </div>
+                  {/* 버튼 */}
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded font-medium text-sm">
+                    더 알아보기
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 비교 결과 요약 */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 className="text-lg font-semibold text-blue-800 mb-3">📊 Pretendard 폰트의 장점</h4>
+            <ul className="space-y-2 text-sm text-blue-700">
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span><strong>향상된 가독성:</strong> 한글과 영문의 조화로운 렌더링</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span><strong>일관된 디자인:</strong> 다양한 굵기에서 균일한 품질</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span><strong>전문적인 외관:</strong> 브랜드 아이덴티티 강화</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span><strong>크로스 플랫폼:</strong> 모든 디바이스에서 동일한 경험</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         {/* 테일윈드 클래스 사용법 */}
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">💡 테일윈드 클래스 사용법</h2>
